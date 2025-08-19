@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Complete project proposal",
+    "description": "Finalize the Q4 project proposal with budget estimates and timeline",
+    "dueDate": "2024-01-15T23:59:59.000Z",
+    "priority": "high",
+    "status": "active",
+    "createdAt": "2024-01-10T08:00:00.000Z",
+    "completedAt": null
+  },
+  {
+    "id": 2,
+    "title": "Team meeting preparation",
+    "description": "Prepare agenda and materials for the weekly team meeting",
+    "dueDate": "2024-01-12T14:00:00.000Z",
+    "priority": "medium",
+    "status": "active",
+    "createdAt": "2024-01-08T10:30:00.000Z",
+    "completedAt": null
+  },
+  {
+    "id": 3,
+    "title": "Review code changes",
+    "description": "Review pull requests from the development team",
+    "dueDate": null,
+    "priority": "medium",
+    "status": "completed",
+    "createdAt": "2024-01-07T09:15:00.000Z",
+    "completedAt": "2024-01-11T16:45:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "Update documentation",
+    "description": "Update API documentation with latest changes",
+    "dueDate": "2024-01-20T17:00:00.000Z",
+    "priority": "low",
+    "status": "active",
+    "createdAt": "2024-01-09T14:20:00.000Z",
+    "completedAt": null
+  },
+  {
+    "id": 5,
+    "title": "Client presentation",
+    "description": "Prepare and deliver presentation to new client",
+    "dueDate": "2024-01-13T11:00:00.000Z",
+    "priority": "high",
+    "status": "active",
+    "createdAt": "2024-01-06T12:00:00.000Z",
+    "completedAt": null
+  }
+]
