@@ -13,7 +13,7 @@ import Error from "@/components/ui/Error"
 import { taskService } from "@/services/api/taskService"
 
 const TasksPage = () => {
-  const [tasks, setTasks] = useState([])
+const [tasks, setTasks] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
   const [searchQuery, setSearchQuery] = useState("")
@@ -28,7 +28,7 @@ const TasksPage = () => {
   const [deleteTaskId, setDeleteTaskId] = useState(null)
 
   // Load tasks
-  const loadTasks = useCallback(async () => {
+const loadTasks = useCallback(async () => {
     try {
       setLoading(true)
       setError("")
@@ -41,7 +41,6 @@ const TasksPage = () => {
       setLoading(false)
     }
   }, [])
-
   useEffect(() => {
     loadTasks()
   }, [loadTasks])
@@ -61,19 +60,19 @@ const TasksPage = () => {
 
     // Filter by search query
     if (searchQuery) {
-      filtered = filtered.filter(task =>
+filtered = filtered.filter(task =>
         task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         task.description.toLowerCase().includes(searchQuery.toLowerCase())
       )
     }
 
     // Filter by status
-    if (filters.status !== "all") {
+if (filters.status !== "all") {
       filtered = filtered.filter(task => task.status === filters.status)
     }
 
     // Sort tasks
-    filtered.sort((a, b) => {
+filtered.sort((a, b) => {
       switch (filters.sortBy) {
         case "dueDate":
           if (!a.dueDate) return 1
@@ -95,7 +94,7 @@ const TasksPage = () => {
   }, [tasks, searchQuery, filters])
 
   // Task operations
-  const handleCreateTask = async (taskData) => {
+const handleCreateTask = async (taskData) => {
     try {
       const newTask = await taskService.create(taskData)
       setTasks(prev => [newTask, ...prev])
@@ -112,7 +111,7 @@ const TasksPage = () => {
     if (!editingTask) return
 
     try {
-      const updatedTask = await taskService.update(editingTask.id, taskData)
+const updatedTask = await taskService.update(editingTask.id, taskData)
       setTasks(prev => prev.map(task => 
         task.id === editingTask.id ? updatedTask : task
       ))
@@ -127,14 +126,13 @@ const TasksPage = () => {
 
   const handleToggleComplete = async (taskId, completed) => {
     try {
-      const task = tasks.find(t => t.id === taskId)
+const task = tasks.find(t => t.id === taskId)
       if (!task) return
 
-      const updatedTask = await taskService.update(taskId, {
+const updatedTask = await taskService.update(taskId, {
         status: completed ? "completed" : "active",
         completedAt: completed ? new Date().toISOString() : null
       })
-      
       setTasks(prev => prev.map(t => 
         t.id === taskId ? updatedTask : t
       ))
@@ -154,7 +152,7 @@ const TasksPage = () => {
     if (!deleteTaskId) return
 
     try {
-      await taskService.delete(deleteTaskId)
+await taskService.delete(deleteTaskId)
       setTasks(prev => prev.filter(task => task.id !== deleteTaskId))
       setDeleteTaskId(null)
       toast.success("Task deleted successfully")
@@ -237,7 +235,7 @@ const TasksPage = () => {
 
         {/* Modals */}
         {showTaskForm && (
-          <TaskForm
+<TaskForm
             task={editingTask}
             onSubmit={handleTaskSubmit}
             onCancel={closeTaskForm}

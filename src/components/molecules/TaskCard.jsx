@@ -8,7 +8,7 @@ import { cn } from "@/utils/cn"
 
 const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
   const getDueDateIndicator = () => {
-    if (!task.dueDate) return "future-indicator"
+if (!task.dueDate) return "future-indicator"
     
     const dueDate = new Date(task.dueDate)
     if (isPast(dueDate) && !isToday(dueDate)) return "overdue-indicator"
@@ -17,7 +17,7 @@ const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
   }
 
   const getDueDateText = () => {
-    if (!task.dueDate) return null
+if (!task.dueDate) return null
     
     const dueDate = new Date(task.dueDate)
     if (isPast(dueDate) && !isToday(dueDate)) return { text: "Overdue", color: "text-red-600" }
@@ -34,13 +34,13 @@ const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
       className={cn(
         "task-card",
         getDueDateIndicator(),
-        task.status === "completed" && "opacity-75"
+task.status === "completed" && "opacity-75"
       )}
     >
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 pt-1">
           <Checkbox
-            checked={task.status === "completed"}
+checked={task.status === "completed"}
             onChange={(checked) => onToggleComplete(task.id, checked)}
           />
         </div>
@@ -49,13 +49,13 @@ const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
               <h3 className={cn(
-                "font-display font-medium text-gray-900 break-words",
+"font-display font-medium text-gray-900 break-words",
                 task.status === "completed" && "line-through text-gray-500"
               )}>
                 {task.title}
               </h3>
               
-              {task.description && (
+{task.description && (
                 <p className={cn(
                   "mt-1 text-sm text-gray-600 break-words",
                   task.status === "completed" && "line-through text-gray-400"
@@ -65,7 +65,7 @@ const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
               )}
               
               <div className="flex items-center gap-3 mt-3">
-                <Badge variant={task.priority}>
+<Badge variant={task.priority}>
                   {task.priority.charAt(0).toUpperCase() + task.priority.slice(1)} Priority
                 </Badge>
                 
@@ -81,7 +81,7 @@ const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => onEdit(task)}
+onClick={() => onEdit(task)}
                 className="opacity-0 group-hover:opacity-100 transition-opacity"
               >
                 <ApperIcon name="Edit2" className="h-4 w-4" />
@@ -90,7 +90,7 @@ const TaskCard = ({ task, onToggleComplete, onEdit, onDelete }) => {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => onDelete(task.id)}
+onClick={() => onDelete(task.id)}
                 className="opacity-0 group-hover:opacity-100 transition-opacity text-red-600 hover:text-red-700 hover:bg-red-50"
               >
                 <ApperIcon name="Trash2" className="h-4 w-4" />

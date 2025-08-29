@@ -8,7 +8,7 @@ import Button from "@/components/atoms/Button"
 import ApperIcon from "@/components/ApperIcon"
 
 const TaskForm = ({ task, onSubmit, onCancel }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: task?.title || "",
     description: task?.description || "",
     dueDate: task?.dueDate ? format(new Date(task.dueDate), "yyyy-MM-dd") : "",
@@ -34,7 +34,7 @@ const TaskForm = ({ task, onSubmit, onCancel }) => {
       return
     }
 
-    const taskData = {
+const taskData = {
       ...formData,
       dueDate: formData.dueDate ? new Date(formData.dueDate) : null
     }
@@ -84,7 +84,7 @@ const TaskForm = ({ task, onSubmit, onCancel }) => {
             </label>
             <Input
               type="text"
-              value={formData.title}
+value={formData.title}
               onChange={(e) => handleChange("title", e.target.value)}
               placeholder="Enter task title..."
               className={errors.title ? "border-red-500 focus:ring-red-500" : ""}
@@ -99,7 +99,7 @@ const TaskForm = ({ task, onSubmit, onCancel }) => {
               Description (Optional)
             </label>
             <Textarea
-              value={formData.description}
+value={formData.description}
               onChange={(e) => handleChange("description", e.target.value)}
               placeholder="Add more details about this task..."
               rows={3}
@@ -112,7 +112,7 @@ const TaskForm = ({ task, onSubmit, onCancel }) => {
             </label>
             <Input
               type="date"
-              value={formData.dueDate}
+value={formData.dueDate}
               onChange={(e) => handleChange("dueDate", e.target.value)}
               min={format(new Date(), "yyyy-MM-dd")}
             />
@@ -123,7 +123,7 @@ const TaskForm = ({ task, onSubmit, onCancel }) => {
               Priority
             </label>
             <Select
-              value={formData.priority}
+value={formData.priority}
               onChange={(e) => handleChange("priority", e.target.value)}
             >
               <option value="low">Low Priority</option>
