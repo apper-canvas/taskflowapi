@@ -11,6 +11,7 @@ const TaskForm = ({ task, onSubmit, onCancel }) => {
 const [formData, setFormData] = useState({
     title: task?.title || "",
     description: task?.description || "",
+    subcategory: task?.subcategory || "",
     dueDate: task?.dueDate ? format(new Date(task.dueDate), "yyyy-MM-dd") : "",
     priority: task?.priority || "medium"
   })
@@ -130,8 +131,21 @@ value={formData.priority}
               <option value="medium">Medium Priority</option>
               <option value="high">High Priority</option>
             </Select>
-          </div>
+</div>
 
+          {/* Subcategory */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Subcategory
+            </label>
+            <Input
+              type="text"
+              placeholder="Enter task subcategory..."
+              value={formData.subcategory}
+              onChange={(e) => handleChange('subcategory', e.target.value)}
+              className="w-full"
+            />
+          </div>
           <div className="flex gap-3 pt-4">
             <Button
               type="submit"

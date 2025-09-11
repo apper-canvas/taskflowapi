@@ -59,10 +59,11 @@ const loadTasks = useCallback(async () => {
     let filtered = [...tasks]
 
     // Filter by search query
-    if (searchQuery) {
+if (searchQuery) {
 filtered = filtered.filter(task =>
         task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        task.description.toLowerCase().includes(searchQuery.toLowerCase())
+        task.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (task.subcategory && task.subcategory.toLowerCase().includes(searchQuery.toLowerCase()))
       )
     }
 

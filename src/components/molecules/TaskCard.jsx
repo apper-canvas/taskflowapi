@@ -63,6 +63,15 @@ checked={task.status === "completed"}
                   {task.description}
                 </p>
               )}
+
+              {task.subcategory && (
+                <p className={cn(
+                  "mt-1 text-xs text-gray-500 font-medium",
+                  task.status === "completed" && "line-through text-gray-400"
+                )}>
+                  Category: {task.subcategory}
+                </p>
+              )}
               
               <div className="flex items-center gap-3 mt-3">
 <Badge variant={task.priority}>

@@ -16,6 +16,7 @@ const mapTaskFromDatabase = (dbTask) => ({
   id: dbTask.Id,
   title: dbTask.title_c,
   description: dbTask.description_c,
+  subcategory: dbTask.subcategory_c,
   dueDate: dbTask.due_date_c,
   priority: dbTask.priority_c,
   status: dbTask.status_c,
@@ -27,9 +28,10 @@ const mapTaskFromDatabase = (dbTask) => ({
 const mapTaskToDatabase = (uiTask) => {
   const dbTask = {};
   
-  // Only include Updateable fields
+// Only include Updateable fields
   if (uiTask.title !== undefined) dbTask.title_c = uiTask.title;
   if (uiTask.description !== undefined) dbTask.description_c = uiTask.description;
+  if (uiTask.subcategory !== undefined) dbTask.subcategory_c = uiTask.subcategory;
   if (uiTask.dueDate !== undefined) dbTask.due_date_c = uiTask.dueDate ? new Date(uiTask.dueDate).toISOString() : null;
   if (uiTask.priority !== undefined) dbTask.priority_c = uiTask.priority;
   if (uiTask.status !== undefined) dbTask.status_c = uiTask.status;
@@ -45,10 +47,11 @@ export const taskService = {
       const apperClient = getApperClient();
       
       const params = {
-        fields: [
+fields: [
           {"field": {"Name": "Name"}},
           {"field": {"Name": "title_c"}},
           {"field": {"Name": "description_c"}},
+          {"field": {"Name": "subcategory_c"}},
           {"field": {"Name": "due_date_c"}},
           {"field": {"Name": "priority_c"}},
           {"field": {"Name": "status_c"}},
@@ -85,9 +88,10 @@ export const taskService = {
       
       const params = {
         fields: [
-          {"field": {"Name": "Name"}},
+{"field": {"Name": "Name"}},
           {"field": {"Name": "title_c"}},
           {"field": {"Name": "description_c"}},
+          {"field": {"Name": "subcategory_c"}},
           {"field": {"Name": "due_date_c"}},
           {"field": {"Name": "priority_c"}},
           {"field": {"Name": "status_c"}},
